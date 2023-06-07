@@ -1,6 +1,8 @@
 spring:
   application:
     name: rental-service
+  zipkin:
+    base-url: http://localhost:9411
   datasource:
     username: postgres
     password: '12345'
@@ -40,3 +42,17 @@ resilience4j:
         wait-duration: 5s
 server:
   port: 0
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
