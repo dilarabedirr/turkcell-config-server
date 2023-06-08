@@ -1,6 +1,11 @@
 spring:
   application:
     name: invoice-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080/realms/RentACarMicroservice/protocol/openid-connect/certs
   data:
     mongodb:
       database: invoicedb-t2
@@ -28,11 +33,6 @@ eureka:
 server:
   port: 0
 management:
-  endpoint:
-    metrics:
-      enabled: true
-    prometheus:
-      enabled: true
   endpoints:
     web:
       exposure:

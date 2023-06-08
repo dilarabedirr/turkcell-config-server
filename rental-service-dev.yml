@@ -1,6 +1,11 @@
 spring:
   application:
     name: rental-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080/realms/RentACarMicroservice/protocol/openid-connect/certs
   datasource:
     username: postgres
     password: '12345'
@@ -41,11 +46,6 @@ resilience4j:
 server:
   port: 0
 management:
-  endpoint:
-    metrics:
-      enabled: true
-    prometheus:
-      enabled: true
   endpoints:
     web:
       exposure:
