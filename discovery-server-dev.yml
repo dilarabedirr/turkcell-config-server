@@ -1,8 +1,6 @@
 spring:
   application:
     name: discovery-server
-  zipkin:
-        base-url: http://localhost:9411
 server:
   port: 8761
 eureka:
@@ -13,7 +11,6 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
   instance:
     hostname: discovery-server
-
 management:
   endpoint:
     metrics:
@@ -23,8 +20,10 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*'
-  metrics:
-    export:
-      prometheus:
-        enabled: true
+        include: "*"
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
